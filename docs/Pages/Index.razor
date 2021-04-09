@@ -42,11 +42,13 @@
 <div class="row">
     <div class="col-auto mr-auto"></div>
     <div class="col-auto">
+        <button type="button" class="btn btn-light" @onclick="CheckPermissionStatus">Check Permission Status</button>
         <button type="button" class="btn btn-light" @onclick="RequestPermission">Request Permission</button>
         <button type="button" class="btn btn-primary" @onclick="CreateNotifcationAsync">Create Notification</button>
     </div>
 </div>
 
+<label>@permissionStatus</label>
 
 @functions{
     private PermissionType permission;
@@ -54,6 +56,7 @@
     private string title = "My Dummy Title";
     private string body = "Lorem ipsum dolor sit ...";
     private string icon = "images/github.png";
+    private string permissionStatus = string.Empty;
 
     protected override async Task OnInitializedAsync()
     {
@@ -74,5 +77,10 @@
     private async Task RequestPermission()
     {
         permission = await NotificationService.RequestPermissionAsync();
+    }
+
+    private async Task CheckPermissionStatus()
+    {
+        permissionStatus = await NotificationService.CheckPermissionStatus();
     }
 }

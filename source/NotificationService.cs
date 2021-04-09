@@ -33,6 +33,13 @@ namespace Append.Blazor.Notifications
             return PermissionType.Default;
         }
 
+        public async ValueTask<string> CheckPermissionStatus()
+        {
+            var module = await moduleTask.Value;
+            string permission = await module.InvokeAsync<string>("permission");
+
+            return permission;
+        }
 
         public async ValueTask CreateAsync(string title, NotificationOptions options) 
         {

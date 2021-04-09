@@ -14,7 +14,12 @@ namespace Append.Blazor.Notifications
         /// </summary>
         /// <returns></returns>
         ValueTask<PermissionType> RequestPermissionAsync();
+        /// <summary>
+        /// Check status of permission to send notifications.
+        /// </summary>
+        /// <returns></returns>
 
+        ValueTask<string> CheckPermissionStatus();
         /// <summary>
         /// Create a Notification with <seealso cref="NotificationOptions"/>
         /// </summary>
